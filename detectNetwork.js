@@ -17,28 +17,57 @@ var detectNetwork = function(cardNumber) {
   // Create variables cardLength, and cardNetwork
   var cardLength = cardNumber.length;
   var cardNetwork = "Unable to identify card network.";
-  // If cardLength not 14, 15, or 16, return default error message.
+  // Check cardLength against cases. If no match, return default error message.
   switch (cardLength) {
+  	case 13:
+  		// If cardLength is 13 check if prefix matches Visa
+  		if(isVisa(cardNumber)) {
+  			cardNetwork = "Visa";
+  		}
+  		// Otherwise, return default error message.
+  		return cardNetwork;
+  		break;
+
   	case 14:
-  		// If cardLength is 14 
-	  	// Check to see if cardPrefix is 38 or 39
+  		// If cardLength is 14 check if prefix matches Diner's Club
 	  	if(isDinersClub(cardNumber)) {
-	  		// If it is return "Diner's Club"
+	  		// If true return "Diner's Club"
 	  		cardNetwork = "Diner's Club";
 	  	}
   		// Otherwise, return default error message.
   		return cardNetwork;
   		break;
+
 	case 15:
-	  // If cardLength is 15
-	  cardPrefix = cardNumber.slice(0, 2);
-	  	// Check to see if cardPrefix is 34 or 37 
+	  // If cardLength is 15 check if prefix matches American Express 
 	  	if(isAmericanExpress(cardNumber)) {
-	  		// If it is return "American Express"
+	  		// If true return "American Express"
 	  		cardNetwork = "American Express";
 	  	}
+  		// Otherwise, return default error message.
 	  	return cardNetwork;
 	  	break;
+
+  	case 16:
+  		// If cardLength is 16 check if prefix matches Visa or MasterCard
+  		if(isVisa(cardNumber)) {
+  			cardNetwork = "Visa";
+  		} else if(isMasterCard(cardNumber)) {
+  			cardNetwork = "MasterCard";
+  		}
+  		// Otherwise, return default error message.
+  		return cardNetwork;
+  		break;
+
+  	case 19:
+  		// If cardLength is 19 check if prefix matches Visa
+  		if(isVisa(cardNumber)) {
+  			cardNetwork = "Visa";
+  		}
+  		// Otherwise, return default error message.
+  		return cardNetwork;
+  		break;
+
   	default:
   		// Return default error message if no matches.
   		return cardNetwork;
