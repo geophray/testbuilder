@@ -19,6 +19,8 @@ var detectNetwork = function(cardNumber) {
   var cardNetwork = "Unable to identify card network.";
   // Check cardLength against cases. If no match, return default error message.
   switch (cardLength) {
+  	case 12:
+
   	case 13:
   		// If cardLength is 13 check if prefix matches Visa
   		if(isVisa(cardNumber)) {
@@ -48,13 +50,21 @@ var detectNetwork = function(cardNumber) {
   			cardNetwork = "Visa";
   		} else if(isMasterCard(cardNumber)) {
   			cardNetwork = "MasterCard";
+  		} else if(isDiscover(cardNumber)) {
+  			cardNetwork = "Discover";
   		}
   		break;
+
+  	case 17:
+
+  	case 18:
 
   	case 19:
   		// If cardLength is 19 check if prefix matches Visa
   		if(isVisa(cardNumber)) {
   			cardNetwork = "Visa";
+  		} else if(isDiscover(cardNumber)) {
+  			cardNetwork = "Discover";
   		}
   		break;
 
