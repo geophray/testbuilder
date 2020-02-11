@@ -20,51 +20,76 @@ var detectNetwork = function(cardNumber) {
   // Check cardLength against cases. If no match, return default error message.
   switch (cardLength) {
   	case 12:
+  		//if cardLength is 12 chedk if prefix matches Maestro
+  		if(isMaestro(cardNumber)) {
+  			cardNetwork = "Maestro";
+  		}
+  		break;
 
   	case 13:
-  		// If cardLength is 13 check if prefix matches Visa
+  		// If cardLength is 13 check if prefix matches Visa or Maestro
   		if(isVisa(cardNumber)) {
   			cardNetwork = "Visa";
+  		} else if(isMaestro(cardNumber)) {
+  			cardNetwork = "Maestro";
   		}
   		break;
 
   	case 14:
-  		// If cardLength is 14 check if prefix matches Diner's Club
+  		// If cardLength is 14 check if prefix matches Diner's Club or Maestro
 	  	if(isDinersClub(cardNumber)) {
 	  		// If true return "Diner's Club"
 	  		cardNetwork = "Diner's Club";
-	  	}
+	  	} else if(isMaestro(cardNumber)) {
+  			cardNetwork = "Maestro";
+  		}
   		break;
 
 	case 15:
-	  // If cardLength is 15 check if prefix matches American Express 
+	  // If cardLength is 15 check if prefix matches American Express or Maestro
 	  	if(isAmericanExpress(cardNumber)) {
 	  		// If true return "American Express"
 	  		cardNetwork = "American Express";
-	  	}
+	  	} else if(isMaestro(cardNumber)) {
+  			cardNetwork = "Maestro";
+  		}
 	  	break;
 
   	case 16:
-  		// If cardLength is 16 check if prefix matches Visa or MasterCard
+  		// If cardLength is 16 check if prefix matches Visa, MasterCard, Discover, or Maestro
   		if(isVisa(cardNumber)) {
   			cardNetwork = "Visa";
   		} else if(isMasterCard(cardNumber)) {
   			cardNetwork = "MasterCard";
   		} else if(isDiscover(cardNumber)) {
   			cardNetwork = "Discover";
+  		} else if(isMaestro(cardNumber)) {
+  			cardNetwork = "Maestro";
   		}
   		break;
 
   	case 17:
+  		// If cardLength is 19 check if prefix matches Maestro
+  		if(isMaestro(cardNumber)) {
+  			cardNetwork = "Maestro";
+  		}
+  		break;
 
   	case 18:
+  		// If cardLength is 19 check if prefix matches Maestro
+  		if(isMaestro(cardNumber)) {
+  			cardNetwork = "Maestro";
+  		}
+  		break;
 
   	case 19:
-  		// If cardLength is 19 check if prefix matches Visa
+  		// If cardLength is 19 check if prefix matches Visa, Discover, or Maestro
   		if(isVisa(cardNumber)) {
   			cardNetwork = "Visa";
   		} else if(isDiscover(cardNumber)) {
   			cardNetwork = "Discover";
+  		} else if(isMaestro(cardNumber)) {
+  			cardNetwork = "Maestro";
   		}
   		break;
 
