@@ -14,17 +14,15 @@ var detectNetwork = function(cardNumber) {
 
   // Once you've read this, go ahead and try to implement this function, then return to the console.
 
-  // Create variables cardLength, cardPrefix, and cardNetwork
+  // Create variables cardLength, and cardNetwork
   var cardLength = cardNumber.length;
-  var cardPrefix = "";
   var cardNetwork = "Unable to identify card network.";
   // If cardLength not 14, 15, or 16, return default error message.
   switch (cardLength) {
   	case 14:
   		// If cardLength is 14 
-  		cardPrefix = cardNumber.slice(0, 2);
 	  	// Check to see if cardPrefix is 38 or 39
-	  	if(cardPrefix === '38' | cardPrefix === '39') {
+	  	if(isDinersClub(cardNumber)) {
 	  		// If it is return "Diner's Club"
 	  		cardNetwork = "Diner's Club";
 	  	}
@@ -35,16 +33,30 @@ var detectNetwork = function(cardNumber) {
 	  // If cardLength is 15
 	  cardPrefix = cardNumber.slice(0, 2);
 	  	// Check to see if cardPrefix is 34 or 37 
-	  	if(cardPrefix === '34' | cardPrefix === '37') {
+	  	if(isAmericanExpress(cardNumber)) {
 	  		// If it is return "American Express"
 	  		cardNetwork = "American Express";
 	  	}
 	  	return cardNetwork;
 	  	break;
   	default:
+  		// Return default error message if no matches.
   		return cardNetwork;
 
   	}
-
-  
 };
+
+//Create helper functions to check prefixes
+var isDinersClub = function(cardNumber) {
+  	var cardPrefix = cardNumber.slice(0, 2);
+	if(cardPrefix === '38' | cardPrefix === '39') {
+		return true;
+	} 
+};
+
+var isAmericanExpress = function(cardNumber) {
+	var cardPrefix = cardNumber.slice(0, 2);
+	if(cardPrefix === '34' | cardPrefix === '37') {
+		return true;
+	} 
+}
