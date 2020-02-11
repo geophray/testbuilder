@@ -368,20 +368,23 @@ describe('Switch', function() {
 
   // Iterate over card prefixes
   for(let i = 0; i < cardPrefixes.length; i++) {
-    // Set prefixLength
-    var prefixLength = cardPrefixes[i].length;
-    var currPrefix = cardPrefixes[i];
-    // Output tests, replacing the first prefixLength numbers from each
-    // cardNumber input to detectNetwork with cardPrefixes[i]
-    it('has a prefix of ' + currPrefix + ' and a length of 16', function() {
-      detectNetwork(currPrefix + '4903321432141212'.slice(prefixLength)).should.equal('Switch');
-    });
-    it('has a prefix of ' + currPrefix + ' and a length of 18', function() {
-      detectNetwork(currPrefix + '490332143214121234'.slice(prefixLength)).should.equal('Switch');
-    });
-    it('has a prefix of ' + currPrefix + ' and a length of 19', function() {
-      detectNetwork(currPrefix + '4903321432141212345'.slice(prefixLength)).should.equal('Switch');
-    });
+    (function(i) {
+      // Set prefixLength
+      var prefixLength = cardPrefixes[i].length;
+      var currPrefix = cardPrefixes[i];
+      // Output tests, replacing the first prefixLength numbers from each
+      // cardNumber input to detectNetwork with cardPrefixes[i]
+      it('has a prefix of ' + currPrefix + ' and a length of 16', function() {
+        detectNetwork(currPrefix + '4903321432141212'.slice(prefixLength)).should.equal('Switch');
+      });
+      it('has a prefix of ' + currPrefix + ' and a length of 18', function() {
+        detectNetwork(currPrefix + '490332143214121234'.slice(prefixLength)).should.equal('Switch');
+      });
+      it('has a prefix of ' + currPrefix + ' and a length of 19', function() {
+        detectNetwork(currPrefix + '4903321432141212345'.slice(prefixLength)).should.equal('Switch');
+      });
+
+    })(i);
   }
 
 });
