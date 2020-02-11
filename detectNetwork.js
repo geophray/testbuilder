@@ -48,7 +48,3 @@ var detectNetwork = function(cardNumber) {
 
   
 };
-
-
-// var network = detectNetwork('3734567890123450');
-// console.log(network);
