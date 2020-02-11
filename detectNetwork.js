@@ -60,3 +60,17 @@ var isAmericanExpress = function(cardNumber) {
 		return true;
 	} 
 }
+
+var isVisa = function(cardNumber) {
+	var cardPrefix = cardNumber.slice(0, 1);
+	if(cardPrefix === '4') {
+		return true;
+	}
+}
+
+var isMasterCard = function(cardNumber) {
+	var cardPrefix = cardNumber.slice(0, 2);
+	if(cardPrefix > 50 && cardPrefix < 56) {
+		return true;
+	}
+}
