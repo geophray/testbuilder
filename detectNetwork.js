@@ -61,21 +61,21 @@ var detectNetwork = function(cardNumber) {
   	default:
 
   	}
-  	
+
   	return cardNetwork;
 };
 
 //Create helper functions to check prefixes
 var isDinersClub = function(cardNumber) {
   	var cardPrefix = cardNumber.slice(0, 2);
-	if(cardPrefix === '38' | cardPrefix === '39') {
+	if(cardPrefix === '38' || cardPrefix === '39') {
 		return true;
 	} 
 };
 
 var isAmericanExpress = function(cardNumber) {
 	var cardPrefix = cardNumber.slice(0, 2);
-	if(cardPrefix === '34' | cardPrefix === '37') {
+	if(cardPrefix === '34' || cardPrefix === '37') {
 		return true;
 	} 
 }
@@ -89,7 +89,23 @@ var isVisa = function(cardNumber) {
 
 var isMasterCard = function(cardNumber) {
 	var cardPrefix = cardNumber.slice(0, 2);
-	if(cardPrefix > 50 && cardPrefix < 56) {
+	if(cardPrefix >= 51 && cardPrefix <= 55) {
+		return true;
+	}
+}
+
+var isDiscover = function(cardNumber) {
+	var first2Digits = cardNumber.slice(0, 2);
+	var first3Digits = cardNumber.slice(0, 3);
+	var first4Digits = cardNumber.slice(0, 4);
+	if(first2Digits === '65' || first3Digits >= 644 && first3Digits <= 649 || first4Digits === '6011') {
+		return true;
+	}
+}
+
+var isMaestro = function(cardNumber) {
+	var cardPrefix = cardNumber.slice(0, 4);
+	if(cardPrefix === '5018' || cardPrefix === '5020' || cardPrefix === '5038' || cardPrefix === '6304') {
 		return true;
 	}
 }
