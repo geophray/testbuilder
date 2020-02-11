@@ -142,6 +142,56 @@ describe('Discover', function() {
   // Implement these tests (and others) and make them pass!
   var should = chai.should();
 
+  // prefix of 65
+  it('has a prefix of 65 and a length of 16', function() {
+    detectNetwork('6511321432143214').should.equal('Discover');
+  });
+  it('has a prefix of 65 and a length of 19', function() {
+    detectNetwork('6511321432143214321').should.equal('Discover');
+  });
+  // prefix of 644
+  it('has a prefix of 644 and a length of 16', function() {
+    detectNetwork('6441321432143214').should.equal('Discover');
+  });
+  it('has a prefix of 644 and a length of 19', function() {
+    detectNetwork('6441321432143214321').should.equal('Discover');
+  });
+  // prefix of 645
+  it('has a prefix of 645 and a length of 16', function() {
+    detectNetwork('6451321432143214').should.equal('Discover');
+  });
+  it('has a prefix of 645 and a length of 19', function() {
+    detectNetwork('6451321432143214321').should.equal('Discover');
+  });
+  // prefix of 646
+  it('has a prefix of 646 and a length of 16', function() {
+    detectNetwork('6461321432143214').should.equal('Discover');
+  });
+  it('has a prefix of 646 and a length of 19', function() {
+    detectNetwork('6461321432143214321').should.equal('Discover');
+  });
+  // prefix of 647
+  it('has a prefix of 647 and a length of 16', function() {
+    detectNetwork('6471321432143214').should.equal('Discover');
+  });
+  it('has a prefix of 647 and a length of 19', function() {
+    detectNetwork('6471321432143214321').should.equal('Discover');
+  });
+  // prefix of 648
+  it('has a prefix of 648 and a length of 16', function() {
+    detectNetwork('6481321432143214').should.equal('Discover');
+  });
+  it('has a prefix of 648 and a length of 19', function() {
+    detectNetwork('6481321432143214321').should.equal('Discover');
+  });
+  // prefix of 649
+  it('has a prefix of 649 and a length of 16', function() {
+    detectNetwork('6491321432143214').should.equal('Discover');
+  });
+  it('has a prefix of 649 and a length of 19', function() {
+    detectNetwork('6491321432143214321').should.equal('Discover');
+  });
+  // prefix of 6011
   it('has a prefix of 6011 and a length of 16', function() {
     detectNetwork('6011321432143214').should.equal('Discover');
   });
@@ -231,7 +281,7 @@ describe('Maestro', function() {
   });
   // prefix of 6304
   it('has a prefix of 6304 and a length of 12', function() {
-    detectNetwork('501832143214').should.equal('Maestro');
+    detectNetwork('630432143214').should.equal('Maestro');
   });
   it('has a prefix of 6304 and a length of 13', function() {
     detectNetwork('6304321432141').should.equal('Maestro');
