@@ -24,8 +24,6 @@ var detectNetwork = function(cardNumber) {
   		if(isVisa(cardNumber)) {
   			cardNetwork = "Visa";
   		}
-  		// Otherwise, return default error message.
-  		return cardNetwork;
   		break;
 
   	case 14:
@@ -34,8 +32,6 @@ var detectNetwork = function(cardNumber) {
 	  		// If true return "Diner's Club"
 	  		cardNetwork = "Diner's Club";
 	  	}
-  		// Otherwise, return default error message.
-  		return cardNetwork;
   		break;
 
 	case 15:
@@ -44,8 +40,6 @@ var detectNetwork = function(cardNumber) {
 	  		// If true return "American Express"
 	  		cardNetwork = "American Express";
 	  	}
-  		// Otherwise, return default error message.
-	  	return cardNetwork;
 	  	break;
 
   	case 16:
@@ -55,8 +49,6 @@ var detectNetwork = function(cardNumber) {
   		} else if(isMasterCard(cardNumber)) {
   			cardNetwork = "MasterCard";
   		}
-  		// Otherwise, return default error message.
-  		return cardNetwork;
   		break;
 
   	case 19:
@@ -64,15 +56,13 @@ var detectNetwork = function(cardNumber) {
   		if(isVisa(cardNumber)) {
   			cardNetwork = "Visa";
   		}
-  		// Otherwise, return default error message.
-  		return cardNetwork;
   		break;
 
   	default:
-  		// Return default error message if no matches.
-  		return cardNetwork;
 
   	}
+  	
+  	return cardNetwork;
 };
 
 //Create helper functions to check prefixes
